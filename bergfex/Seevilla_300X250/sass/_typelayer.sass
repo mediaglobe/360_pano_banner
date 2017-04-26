@@ -1,0 +1,60 @@
+/// DESTINATION NAMES & DESCRIPTIONS
+.stage-map h1, .stage-map h2, .destination-city
+  +absCenter
+  +animate(slidein, 500ms, 1, ease-out)
+  bottom: 10%
+  color: $clr-dark-gray
+  font-size: $font-size-destination
+  font-weight: $font-weight-headline
+  left: 0
+  right: 0
+  padding: 0 0.5em
+  top: auto
+  text-align: center
+  z-index: 1
+
+.stage-destination
+
+  .destination-information
+    +absCenter
+    left: 0
+    right: 0
+    height: 33%
+    top: auto
+    z-index: 2
+    +gradient(rgba(0,0,0,0), rgba(0,0,0,0.7))
+
+  .destination-text
+    padding: 0.5rem 0.5rem 0.5rem
+    vertical-align: bottom
+    position: absolute
+    bottom: 0
+    width: 100%
+    left: 0
+
+  .destination-logo
+    +borderbox
+    background-color: #fff
+    margin-top: 1rem
+    padding: 6px
+    img
+      display: block
+
+  h1, h2, .destination-name
+    color: $clr-white
+    display: inline-block
+    font-size: $font-size-infohead
+    font-weight: $font-weight-headline
+    margin-bottom: 0
+    position: relative
+    vertical-align: bottom
+    z-index: 4
+
+  h3, h4, .destination-description
+    color: $clr-white
+    display: inline-block
+    font-size: $font-size-infotext
+    font-weight: $font-weight-base
+    position: relative
+    vertical-align: bottom
+    z-index: 4

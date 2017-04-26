@@ -1,0 +1,252 @@
+// CSS MIXINS  |  version 2.0
+// Daniel Benecke – 2017
+
+/*----------------------------------------------------*/
+/*  ANIMATION */
+/*----------------------------------------------------*/
+$default-prefixes: webkit moz o
+=prefix-values($property, $value, $prefixes: $default-prefixes)
+  @each $prefix in $prefixes
+    -#{$prefix}-#{$property}: #{$value}
+  #{$property}: #{$value}
+
+=animation($value)
+  -webkit-animation: unquote($value)
+  -moz-animation: unquote($value)
+  -ms-animation: unquote($value)
+  -o-animation: unquote($value)
+  animation: unquote($value)
+
+=animation-property($property, $value)
+  -webkit-animation-#{$property}: unquote($value)
+  -moz-animation-#{$property}: unquote($value)
+  -ms-animation-#{$property}: unquote($value)
+  -o-animation-#{$property}: unquote($value)
+  animation-#{$property}: unquote($value)
+
+=animation-timing($value)
+  -webkit-animation-timing-function: $value
+  animation-timing-function: $value
+
+=keyframes($name)
+  @-webkit-keyframes #{$name}
+    @content
+  @-moz-keyframes #{$name}
+    @content
+  @-ms-keyframes #{$name}
+    @content
+  @-o-keyframes #{$name}
+    @content
+  @keyframes #{$name}
+    @content
+
+=animate ($animation: fadein, $duration: 0.25s, $iteration-count: 1, $timing: ease-in-out, $animation-direction: normal, $fill-mode: forwards, $delay: 0ms)
+  // Webkit
+  -webkit-animation-name: $animation
+  -webkit-animation-duration: $duration
+  -webkit-animation-timing-function: $timing
+  -webkit-animation-iteration-count: $iteration-count
+  -webkit-animation-direction: $animation-direction
+  -webkit-animation-fill-mode: $fill-mode
+  -webkit-animation-delay: $delay
+  // Mozilla
+  -moz-animation-name: $animation
+  -moz-animation-duration: $duration
+  -moz-animation-timing-function: $timing
+  -moz-animation-iteration-count: $iteration-count
+  -moz-animation-direction: $animation-direction
+  -moz-animation-fill-mode: $fill-mode
+  -moz-animation-delay: $delay
+  // MS
+  -ms-animation-name: $animation
+  -ms-animation-duration: $duration
+  -ms-animation-timing-function: $timing
+  -ms-animation-iteration-count: $iteration-count
+  -ms-animation-direction: $animation-direction
+  -ms-animation-fill-mode: $fill-mode
+  -ms-animation-delay: $delay
+  // Opera
+  -o-animation-name: $animation
+  -o-animation-duration: $duration
+  -o-animation-timing-function: $timing
+  -o-animation-iteration-count: $iteration-count
+  -o-animation-direction: $animation-direction
+  -o-animation-fill-mode: $fill-mode
+  -o-animation-delay: $delay
+  // Default
+  animation-name: $animation
+  animation-duration: $duration
+  animation-timing-function: $timing
+  animation-iteration-count: $iteration-count
+  animation-direction: $animation-direction
+  animation-fill-mode: $fill-mode
+  animation-delay: $delay
+
+=transit($att: all, $duration: .2s, $type: ease-in-out, $delay: 0s)
+  -moz-transition: $att $duration $type $delay
+  -webkit-transition: $att $duration $type $delay
+  -o-transition: $att $duration $type $delay
+  transition: $att $duration $type $delay
+
+=round( $top-left: 3px, $top-right: 3px, $bottom-right: 3px, $bottom-left: 3px )
+  border-radius: $top-left $top-right $bottom-right $bottom-left
+
+=boxshadow( $xval: 0, $yval: 0, $blur: 0, $spread: 0, $color: #999, $inset: null )
+  box-shadow: $xval $yval $blur $spread $color $inset
+
+=ellipsis
+  display: block
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
+  -o-text-overflow: ellipsis
+  -ms-text-overflow: ellipsis
+
+=boxalign ($orient, $align, $pack)
+  -webkit-box-orient: $orient
+  -webkit-box-align: $align
+  -webkit-box-pack: $pack
+  -moz-box-orient: $orient
+  -moz-box-align: $align
+  -moz-box-pack: $pack
+  box-orient: $orient
+  box-align: $align
+  box-pack: $pack
+  display: -webkit-box
+  display: -moz-box
+  display: box
+
+=borderbox
+  -webkit-box-sizing: border-box
+  -moz-box-sizing: border-box
+  -moz-box-sizing: border-box
+  -o-box-sizing: border-box
+  box-sizing: border-box
+
+=boxmodel($boxmodel: border-box)
+  -webkit-box-sizing: $boxmodel
+  -moz-box-sizing: $boxmodel
+  -ms-box-sizing: $boxmodel
+  -o-box-sizing: $boxmodel
+  box-sizing: $boxmodel
+
+=clear
+  content: '\0020'
+  display: inline-block
+
+=clearfix
+  &::before, &::after
+    content: '\0020'
+    display: inline-block
+
+=flexbox ($pack: center, $align: center, $orient: vertical)
+  /* Internet Explorer 10 */
+  display: -ms-flexbox
+  -ms-flex-pack: $pack
+  -ms-flex-align: $align
+  -ms-box-orient: $orient
+
+  /* Firefox */
+  display: -moz-box
+  -moz-box-pack: $pack
+  -moz-box-align: $align
+  -moz-box-orient: $orient
+
+  /* Safari, Chrome, and Opera */
+  display: -webkit-box
+  -webkit-box-pack: $pack
+  -webkit-box-align: $align
+  -webkit-box-orient: $orient
+
+  /* W3C */
+  display: box
+  box-pack: center
+  box-align: center
+  box-orient: $orient
+
+=flexorder ($order: 1)
+  -ms-flex-order: $order /* Internet Explorer 10 */
+  -moz-box-ordinal-group: $order /* Firefox */
+  -webkit-box-ordinal-group: $order /* Safari and Chrome */
+  box-ordinal-group: $order
+
+=flex($direction: column, $justify: center, $align: center, $wrap: wrap)
+  display: -webkit-flex
+  display: flex
+  -webkit-flex-direction: $direction /* works with row or column */
+  flex-direction: $direction
+  -webkit-align-items: $justify
+  align-items: $justify
+  -webkit-justify-content: $justify
+  justify-content: $justify
+  -webkit-flex-wrap: $wrap
+  flex-wrap: $wrap
+  -webkit-align-items: $align
+  align-items: $align
+
+=inlineflex($direction: column, $justify: center, $align: center, $wrap: wrap)
+  display: -webkit-inline-flex
+  display: inline-flex
+  -webkit-flex-direction: $direction /* works with row or column */
+  flex-direction: $direction
+  -webkit-align-items: $justify
+  align-items: $justify
+  -webkit-justify-content: $justify
+  justify-content: $justify
+  -webkit-flex-wrap: $wrap
+  flex-wrap: $wrap
+  -webkit-align-items: $align
+  align-items: $align
+
+=nowrap
+  white-space: nowrap
+
+
+=absCenter($top: 0, $right: 0, $bottom: 0, $left: 0, $position: absolute)
+  bottom: $bottom
+  left: $left
+  right: $right
+  top: $top
+  position: $position
+  margin: auto
+
+
+=gradient( $clr1: rgba(0, 0, 0, 0.77), $clr2: rgba(0, 0, 0, 0.1) )
+  background-color: $clr1
+  // background-image: -webkit-gradient( linear, left top, right top, color-stop(1,rgba($clr1,0)),color-stop(0, $clr2) )
+  // background: -webkit-linear-gradient(left, $clr1 0%, $clr2 100%)
+  // background: -moz-linear-gradient(left, $clr1 0%, $clr2 100%)
+  // background: -ms-linear-gradient(left, $clr1 0%, $clr2 100%)
+  // background: -o-linear-gradient(left, $clr1 0%, $clr2 100%)
+  // background: linear-gradient(left, $clr1 0%, $clr2 100%)
+  background: linear-gradient(to right, $clr1 0%, $clr2 100%)
+
+
+=aspectRatio($x: 100, $y: 200, $pseudo: false)
+  $_padding: unquote( ( $y / $x ) * 100 + '%' )
+  position: relative
+  @if $pseudo
+    &::before
+      content: '\0020'
+      display: table
+      width: 100%
+      padding-top: $_padding
+  @else
+    padding-top: $_padding
+
+/*----------------------------------------------------*/
+/*  Helper classes */
+/*----------------------------------------------------*/
+.noscroll
+  overflow: hidden
+
+.floatleft
+  float: left
+
+.floatright
+  float: right
+
+.ellipsis
+  +ellipsis
+  display: inline-block
+  max-width: 100%

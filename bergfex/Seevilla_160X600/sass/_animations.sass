@@ -1,0 +1,195 @@
+///// Animations
+@keyframes fadein
+  0%
+    opacity: 0
+  100%
+    opacity: 1
+
+
+@keyframes idle
+  0%
+    +prefix-values( transform, translate3d(7%, 0, 0) )
+    +prefix-values( animation-timing-function, ease-out )
+  25%
+    +prefix-values( transform, translate3d(23%, 0, 0) )
+    +prefix-values( animation-timing-function, ease-out )
+  80%
+    +prefix-values( transform, translate3d(-20%, 0, 0) )
+    +prefix-values( animation-timing-function, ease-out )
+  100%
+    opacity: 1
+    +prefix-values( transform, translate3d(14%, 0, 0) )
+    +prefix-values( animation-timing-function, ease-in-out )
+
+
+@keyframes glide
+  0%
+    +prefix-values( transform, translate3d(-36%, 0, 0) )
+    +prefix-values( animation-timing-function, ease-out )
+    opacity: 0
+    z-index: 2
+  2%
+    opacity: 1
+    +prefix-values( animation-timing-function, ease-out )
+  22%
+    +prefix-values( transform, translate3d(-57%, 0, 0) )
+    +prefix-values( animation-timing-function, $cubic_bezier )
+    opacity: 1
+    z-index: 2
+  25%
+    +prefix-values( transform, translate3d(-5%, 0, 0) )
+    +prefix-values( animation-timing-function, linear )
+    opacity: 1
+    z-index: 1
+  50%
+    +prefix-values( transform, translate3d(-25%, 0, 0) )
+    +prefix-values( animation-timing-function, linear )
+    opacity: 1
+    z-index: 1
+  66%
+    +prefix-values( transform, translate3d(-36%, 0, 0) )
+    +prefix-values( animation-timing-function, linear )
+    opacity: 1
+    z-index: -1
+  100%
+    +prefix-values( transform, translate3d(-36%, 0, 0) )
+    +prefix-values( animation-timing-function, ease-in-out )
+    opacity: 0
+    z-index: -1
+
+
+///// MENU
+
+@keyframes menu
+  0%
+    +prefix-values( transform, translate3d(0, 0, 0) )
+    +prefix-values( animation-timing-function, ease-out )
+  47%
+    +prefix-values( transform, translate3d(0, 0, 0) )
+    +prefix-values( animation-timing-function, ease-out )
+  48%
+    +prefix-values( transform, translate3d(-33%, 0, 0) )
+    +prefix-values( animation-timing-function, ease-out )
+  52%
+    +prefix-values( transform, translate3d(-33%, 0, 0) )
+    +prefix-values( animation-timing-function, ease-out )
+  53%
+    +prefix-values( transform, translate3d(0, 0, 0) )
+    +prefix-values( animation-timing-function, ease-out )
+  95%
+    +prefix-values( transform, translate3d(0, 0, 0) )
+    +prefix-values( animation-timing-function, ease-out )
+  96%
+    +prefix-values( transform, translate3d(-33%, 0, 0) )
+    +prefix-values( animation-timing-function, ease-out )
+  99%
+    +prefix-values( transform, translate3d(-33%, 0, 0) )
+    +prefix-values( animation-timing-function, ease-out )
+  100%
+    +prefix-values( transform, translate3d(0, 0, 0) )
+    +prefix-values( animation-timing-function, ease-out )
+
+
+@keyframes highlight1
+  0%
+    opacity: 1
+  50%
+    opacity: 1
+  51%
+    opacity: $low_opacity
+  97%
+    opacity: $low_opacity
+  98%
+    opacity: 1
+  100%
+    opacity: 1
+
+
+@keyframes highlight3
+  0%
+    opacity: $low_opacity
+  50%
+    opacity: $low_opacity
+  51%
+    opacity: 1
+  97%
+    opacity: 1
+  98%
+    opacity: $low_opacity
+  100%
+    opacity: $low_opacity
+
+
+@keyframes slowcursor
+  0%
+    +prefix-values( transform, translate3d(0, 0, 0) )
+    +prefix-values( animation-timing-function, ease-out )
+  9%
+    +prefix-values( transform, translate3d(0, 0, 0) )
+    +prefix-values( animation-timing-function, ease-out )
+  47%
+    +prefix-values( transform, translate3d(0, 0, 0) )
+    +prefix-values( animation-timing-function, $cubic_bezier )
+  50%
+    +prefix-values( transform, translate3d(50px, 145px, 0) scale3d(1, 1, 1) )
+    +prefix-values( animation-timing-function, $cubic_bezier )
+  50.5%
+    +prefix-values( transform, translate3d(50px, 145px, 0) scale3d(.8, .8, .8) )
+    +prefix-values( animation-timing-function, $cubic_bezier )
+  51%
+    +prefix-values( transform, translate3d(50px, 145px, 0) scale3d(1, 1, 1) )
+    +prefix-values( animation-timing-function, $cubic_bezier )
+  54%
+    +prefix-values( transform, translate3d(0, 0, 0) )
+    +prefix-values( animation-timing-function, ease-out )
+  95%
+    +prefix-values( transform, translate3d(0, 0, 0) )
+    +prefix-values( animation-timing-function, $cubic_bezier )
+  97%
+    +prefix-values( transform, translate3d(50px, 80px, 0) scale3d(1, 1, 1) )
+    +prefix-values( animation-timing-function, $cubic_bezier )
+  97.5%
+    +prefix-values( transform, translate3d(50px, 80px, 0) scale3d(.8, .8, .8) )
+    +prefix-values( animation-timing-function, $cubic_bezier )
+  98%
+    +prefix-values( transform, translate3d(50px, 80px, 0) scale3d(1, 1, 1) )
+    +prefix-values( animation-timing-function, $cubic_bezier )
+  100%
+    +prefix-values( transform, translate3d(0, 0, 0) )
+    +prefix-values( animation-timing-function, ease-out )
+
+
+// cubic-bezier(.5,1,.34,.61)
+@include keyframes(bouncein)
+  0%
+    transform: translateX(0%) translateY(-$bannerheight)
+    +prefix-values(transition-timing-function, ease-out)
+    opacity: 1
+  40%
+    transform: translateX(0%) translateY(0%)
+    +prefix-values(transition-timing-function, ease-in)
+  50%
+    transform: translateX(0%) translateY(-50%)
+    +prefix-values(transition-timing-function, ease-out)
+  70%
+    transform: translateX(0%) translateY(0%)
+    +prefix-values(transition-timing-function, linear)
+  80%
+    transform: translateX(0%) translateY(-22%)
+    +prefix-values(transition-timing-function, linear)
+  90%
+    transform: translateX(0%) translateY(0%)
+    +prefix-values(transition-timing-function, linear)
+  95%
+    transform: translateX(0%) translateY(-11%)
+    +prefix-values(transition-timing-function, linear)
+  97%
+    transform: translateX(0%) translateY(0%)
+    +prefix-values(transition-timing-function, linear)
+  99%
+    transform: translateX(0%) translateY(-4%)
+    +prefix-values(transition-timing-function, linear)
+  100%
+    transform: translateX(0%) translateY(0)
+    +prefix-values(transition-timing-function, linear)
+    opacity: 1

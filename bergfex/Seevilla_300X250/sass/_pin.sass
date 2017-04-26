@@ -1,0 +1,28 @@
+.fx-pin
+  +animate(bouncein, $pindrop, 1, linear, normal, forwards, $fliptime + $pindrop)
+  @if $bannerwidth/$bannerheight > 1
+    height: $bannerheight / 2
+    width: $bannerheight / 4
+  @else
+    height: $bannerwidth / 2
+    width: $bannerwidth / 4
+
+  +absCenter
+  bottom: 33%
+  +prefix-values(transform, translateY(-$bannerheight))
+  z-index: 2
+
+.fx-pinshadow
+  +absCenter
+  left: 0%
+  right: -5%
+  +animate(pinshadow, $pindrop*0.66, 1, ease-out, normal, forwards, $fliptime + $pindrop)
+  +prefix-values(transform-origin, 50% 50%)
+  top: auto
+  height: 45px
+  opacity: 0
+  width: 90px
+  z-index: 1
+  img
+    height: 100%
+    width: 100%

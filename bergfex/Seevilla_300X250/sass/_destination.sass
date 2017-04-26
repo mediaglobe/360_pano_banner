@@ -1,0 +1,128 @@
+/// DESTINATION IMAGE LAYER
+.destination
+  +animate(fadein, $pantime, 1, ease-out, normal, forwards, $timeline)
+  height: 100%
+  opacity: 0
+
+//.bannerhead
+#directLink
+  +borderbox
+  +gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.1))
+  color: #fff
+  display: block
+  font-size: 11px
+  height: $bannerhead
+  left: 0
+  padding: 0 0.5em
+  position: absolute
+  right: 0
+  text-align: left
+  text-decoration: none
+  text-transform: uppercase
+  top: 0
+  z-index: 999
+
+
+.fx-image
+  height: 100%
+  overflow: hidden
+  img
+    +absCenter
+    bottom: auto
+    top: -50%
+    // bottom: 50%
+    height: auto
+    width: 100%
+
+// camera idle
+.idle
+  +absCenter
+  height: $slideheight
+  margin: auto
+  opacity: 0
+  overflow: hidden
+  width: $slidewidth
+
+  &.img0
+    +animate(glide, $anitime, infinite, linear, normal, both, 0ms)
+  &.img1
+    +animate(glide, $anitime, infinite, linear, normal, both, $anitime/2)
+
+
+.image-holder
+  +absCenter
+  left: 0
+  right: 0
+  height: 100%
+  width: 100%
+  z-index: -1
+
+
+.app-logo
+  +absCenter
+  +borderbox
+  +animate(bouncein, 500ms, 1, normal, $cubic_bezier, forwards, $timeline)
+  bottom: 10%
+  display: block
+  opacity: 0
+  padding: 10px
+  z-index: 2
+  @if $bannerwidth/$bannerheight > 1
+    height: $bannerheight*0.5
+    line-height: $bannerheight*0.5
+    width: $bannerheight*0.5
+  @else
+    height: $bannerwidth*0.66
+    line-height: $bannerwidth*0.66
+    width: $bannerwidth*0.66
+  .button
+    bottom: 17%
+    font-size: $font-size-infotext
+    left: 0
+    line-height: 1.2
+    margin: auto
+    padding: 0 1em
+    position: absolute
+    right: 0
+    text-transform: uppercase
+  &::before
+    +absCenter
+    +round(50%,50%,50%,50%)
+    +transit
+    background-color: rgba(0,0,0,0.25)
+    box-shadow: 0 0 13px 0px #fff
+    content: '\0020'
+    display: block
+    height: 100%
+    width: 100%
+  img
+    padding: 1em
+    position: relative
+    vertical-align: top
+    z-index: 3
+
+  .app-location
+    color: #fff
+    display: inline-block
+    font-size: 1rem
+    // font-weight: 100
+    letter-spacing: 0.055em
+    left: 0
+    line-height: 1.1
+    margin: auto
+    max-height: 78px
+    overflow: hidden
+    position: absolute
+    right: 0
+    text-align: center
+    text-transform: uppercase
+    top: 60%
+    vertical-align: top
+
+.targetlink:hover
+  + .stage.stage-destination > .destination
+    > .app-logo
+      opacity: 1 !important
+    > .cursor
+      +transit
+      opacity: 0 !important

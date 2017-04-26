@@ -1,0 +1,59 @@
+/// MENU
+.menu
+  +animate(menu, $anitime, infinite, ease-out, normal, forwards, 0ms)
+  +absCenter
+  +transit(transform)
+  font-size: 14px
+  font-weight: 300
+  left: auto
+  right: -25%
+  top: auto
+  opacity: 1
+  width: $bannerwidth
+
+
+  li
+    +borderbox
+    +transit
+    background-color: rgba(0,0,0,0.66)
+    box-shadow: 0 0 0 1px #fff inset
+    color: #fff
+    display: block
+    line-height: 1.5
+    opacity: $low_opacity
+    padding: 0 0.4em
+    position: relative
+    margin: 0 0 9px
+    text-align: left
+    text-transform: uppercase
+
+    &:nth-child(1)
+      +animate(highlight1, $anitime, infinite, ease-out, normal, forwards, 0ms)
+    &:nth-child(3)
+      +animate(highlight3, $anitime, infinite, ease-out, normal, forwards, 0ms)
+
+    &:last-child
+      &::after
+        display: none
+
+    &::after
+      content: ''
+      display: block
+      border-bottom: 1px solid rgba(255, 255, 255, 0.66)
+      bottom: -5px
+      left: 0
+      margin: auto
+      position: absolute
+      right: 0
+      top: auto
+
+
+/// CURSOR
+.cursor
+  +absCenter
+  // +animate(cursor, $anitime/2, infinite, linear, normal, forwards, $anitime/2)
+  +animate(slowcursor, $anitime, infinite, linear, normal, forwards, 0ms)
+  top: 25%
+  height: 30px
+  width: 30px
+  z-index: 3

@@ -1,0 +1,90 @@
+//////////////////////////////////////////////
+/// Local vars
+$_perspective: 500
+$_delaytime: $fliptime*4
+//////////////////////////////////////////////
+
+.fx
+
+.fx-map
+  // +aspectRatio( $bannerwidth, $bannerheight, true )
+  height: 100%
+  width: 100%
+  // Call the panning effect animation
+  +animate(panin, $pantime, 1, $cubic_bezier, normal, forwards, $_delaytime + $scantime - $fliptime/2)
+  +prefix-values(transform-origin, 50% 20%)
+
+  img
+    // Fake a map search
+    +animate(scan, $scantime, 1, $cubic_bezier, normal, forwards, 0ms)
+    +absCenter
+    bottom: auto
+    top: 0
+    // position: absolute
+    // margin: auto
+
+// ----------------------------------------------------------------
+// Set the new main timeline!
+// Just in case of follow-up animations of subsequent stages (.stage)
+$timeline: $_delaytime + $scantime - $fliptime/2
+// ----------------------------------------------------------------
+
+.flip-container
+  +prefix-values(perspective, $_perspective)
+
+
+.flip-container, .flip-front
+  height: 100%
+  width: 100%
+
+.flipper
+  // Use mixin
+  height: 100%
+  position: relative
+
+.flip-front
+  // All sides
+  +prefix-values(backface-visibility, hidden)
+  +prefix-values(transition, $fliptime)
+  +prefix-values(transform-style, preserve-3d)
+  overflow: hidden
+  position: absolute
+  top: 0
+  left: 0
+  +prefix-values(transform, rotateY(0deg))
+  z-index: 2
+
+  &::before
+    +gradient( rgba($clr-stagecolor, 1), rgba($map-light-gray, 0) )
+    content: '\0020'
+    display: block
+    height: 33%
+    +absCenter
+    bottom: auto
+    opacity: 0
+    z-index: 1
+    +animate(fadein, $fliptime, 1, ease-in-out, normal, forwards, $_delaytime)
+
+
+  img
+    @include absCenter
+    left: -80%
+    right: -50%
+    top: 0%
+    @if $bannerwidth/$bannerheight > 1
+      height: auto
+      width: 130%
+    @else
+      height: 100%
+      width: auto
+
+
+// Vertical flip
+.flip-container.vertical
+  .flip-front
+    +animate(flipV, $fliptime, 1, $cubic_bezier, normal, forwards, $_delaytime)
+  // .flip-front
+  //   +prefix-values(transform, rotateX(0deg))
+  // &:hover
+  //   .flip-front
+  //     +prefix-values(transform, rotateX(80deg))

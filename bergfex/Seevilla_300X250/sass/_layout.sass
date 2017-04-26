@@ -1,0 +1,49 @@
+
+// Panorama view container
+.container
+  @include absCenter
+  margin: 40px auto
+  width: $bannerwidth
+  // @include flex(vertical)
+
+.wrapper
+  position: relative
+  margin: 0 auto
+
+.banner
+  cursor: pointer
+  position: relative
+  height: $bannerheight
+  overflow: hidden
+  width: $bannerwidth
+
+.stage
+  +absCenter
+  height: 100%
+  width: 100%
+  &.stage-destination
+    z-index: 1
+  &.stage-map
+    z-index: 2
+
+.boxed
+  overflow: hidden
+
+.targetlink
+  position: absolute
+  top: 0
+  left: 0
+  height: $standardheight
+  width: $bannerwidth
+  z-index: 999
+
+// camera idle
+.css-idle
+  // box-shadow: 0 0 0 2px red inset
+  @include absCenter
+  @include animate(idle, $anitime, 1, ease-out, normal, forwards, 0ms)
+  height: $slideheight
+  margin: auto
+  overflow: hidden
+  width: $slidewidth
+  z-index: -2
